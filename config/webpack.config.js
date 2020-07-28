@@ -1,29 +1,30 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const LoadablePlugin = require("@loadable/webpack-plugin");
-const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { appResolve } = require('./utils');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
 
   plugins: [
     new webpack.ProgressPlugin(),
     new LoadablePlugin(),
     new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: "main.[chunkhash].css" }),
+    new MiniCssExtractPlugin({ filename: 'main.[chunkhash].css' }),
   ],
 
   module: {
     rules: [
       {
-        test: /.(ts|tsx)?$/,
-        loader: "ts-loader",
-        include: [],
+        test: /.(ts|tsx|js|jsx)?$/,
+        loader: 'babel-loader',
+        include: appResolve('./src/'),
         exclude: [/node_modules/],
       },
       {
@@ -37,7 +38,7 @@ module.exports = {
           //   loader: "style-loader",
           // },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
 
             options: {
               sourceMap: true,
@@ -49,7 +50,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
 
   optimization: {
@@ -63,7 +64,7 @@ module.exports = {
         },
       },
 
-      chunks: "async",
+      chunks: 'async',
       minChunks: 1,
       minSize: 30000,
       name: true,
