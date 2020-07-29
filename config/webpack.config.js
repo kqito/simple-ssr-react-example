@@ -3,17 +3,16 @@ const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const LoadablePlugin = require('@loadable/webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { appResolve } = require('./utils');
 
-module.exports = {
-  mode: 'development',
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
+module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
-    new LoadablePlugin(),
     new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin(),
     new MiniCssExtractPlugin({ filename: 'main.[chunkhash].css' }),
