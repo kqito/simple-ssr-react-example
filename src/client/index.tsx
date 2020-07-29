@@ -1,22 +1,16 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import { loadableReady } from "@loadable/component";
-import { Router } from "./router";
+import { App } from "./app";
 
 const renderDom = module.hot ? ReactDom.render : ReactDom.hydrate;
 
 export const render = () => {
-  renderDom(
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>,
-    document.getElementById("app")
-  );
+  renderDom(<App />, document.getElementById("app"));
 };
 
 if (module.hot) {
-  module.hot.accept("./router", () => {
+  module.hot.accept("./app", () => {
     render();
   });
 }

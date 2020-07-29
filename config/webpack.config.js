@@ -30,12 +30,12 @@ module.exports = {
         test: /.css$/,
 
         use: [
-          {
+          isProduction && {
             loader: MiniCssExtractPlugin.loader,
           },
-          // {
-          //   loader: "style-loader",
-          // },
+          isDevelopment && {
+            loader: 'style-loader',
+          },
           {
             loader: 'css-loader',
 
@@ -43,7 +43,7 @@ module.exports = {
               sourceMap: true,
             },
           },
-        ],
+        ].filter(Boolean),
       },
     ],
   },
