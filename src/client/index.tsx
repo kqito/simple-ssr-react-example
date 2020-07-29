@@ -4,7 +4,7 @@ import { loadableReady } from "@loadable/component";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./app";
 
-import "./app.css";
+import "./index.css";
 
 const renderDom = module.hot ? ReactDom.render : ReactDom.hydrate;
 
