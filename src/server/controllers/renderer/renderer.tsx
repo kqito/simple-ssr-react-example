@@ -4,7 +4,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { ChunkExtractor } from "@loadable/server";
 
-import { Router } from "../../../client/router";
+import { App } from "../../../client/app";
 import { appResolve } from "../../../utils/path";
 import { renderHtml } from "./renderHtml";
 
@@ -13,17 +13,17 @@ const statsFile = appResolve("./dist/client/loadable-stats.json");
 export function renderer(req: Request, res: Response) {
   const context = {};
 
-  const App = () => (
+  const Root = () => (
     <div id="app">
       <StaticRouter location={req.url} context={context}>
-        <Router />
+        <App />
       </StaticRouter>
     </div>
   );
 
   try {
     const extractor = new ChunkExtractor({ statsFile });
-    const jsx = extractor.collectChunks(<App />);
+    const jsx = extractor.collectChunks(<Root />);
     const body = renderToString(jsx);
     const script = extractor.getScriptTags();
     const style = extractor.getStyleTags();

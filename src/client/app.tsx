@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Router } from "./router";
 
-import "./style/global.css";
+import { Router } from "./router";
+import { Footer } from "./components/footer";
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <div>
       <Router />
-    </BrowserRouter>
+      <Footer />
+    </div>
   );
 };
