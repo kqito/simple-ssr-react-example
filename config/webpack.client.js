@@ -12,23 +12,25 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 const clientConf = {
   mode: isProduction ? 'production' : 'development',
+
   entry: [
     isDevelopment && 'webpack-hot-middleware/client',
     appResolve('./src/client/index'),
   ].filter(Boolean),
+
   output: {
     path: appResolve('./dist/client'),
   },
 
   plugins: [
     isDevelopment && new webpack.HotModuleReplacementPlugin(),
-    new LoadablePlugin(),
     isProduction &&
       new workboxPlugin.GenerateSW({
         swDest: 'sw.js',
         clientsClaim: true,
         skipWaiting: false,
       }),
+    new LoadablePlugin(),
   ].filter(Boolean),
 };
 
