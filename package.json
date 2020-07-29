@@ -1,17 +1,34 @@
 {
-  "version": "1.0.0",
-  "description": "My webpack project",
+  "name": "simple-ssr-react-example",
+  "version": "0.0.1",
+  "description": "A simple react with SSR example",
+  "keywords": [
+    "react",
+    "typescript",
+    "SSR",
+    "example"
+  ],
+  "homepage": "https://github.com/kqito/simple-ssr-react-example#readme",
+  "bugs": {
+    "url": "https://github.com/kqito/simple-ssr-react-example/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kqito/simple-ssr-react-example.git"
+  },
+  "license": "MIT",
+  "author": "Nakagawa kaito",
   "scripts": {
-    "dev": "npm-run-all -s clean build:dev-server serve",
     "build": "npm-run-all -s clean && npm-run-all -p build:client build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config ./config/webpack.client.js",
-    "build:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.js ",
     "build:dev-server": "cross-env NODE_ENV=development webpack --config ./config/webpack.server.js ",
-    "serve": "node dist/server/main.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.js ",
     "clean": "rimraf ./dist",
+    "dev": "npm-run-all -s clean build:dev-server serve",
     "format": "npm-run-all -s format:*",
     "format:fix": "prettier --write './src/**/*.{ts,tsx,js,json}'",
-    "format:lint": "eslint ./src --ext .ts,.tsx"
+    "format:lint": "eslint ./src --ext .ts,.tsx",
+    "serve": "node dist/server/main.js"
   },
   "husky": {
     "hooks": {
