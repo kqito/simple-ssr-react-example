@@ -28,7 +28,6 @@ module.exports = {
       },
       {
         test: /.css$/,
-
         use: [
           isProduction && {
             loader: MiniCssExtractPlugin.loader,
@@ -38,9 +37,8 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-
             options: {
-              sourceMap: true,
+              sourceMap: isDevelopment,
             },
           },
         ].filter(Boolean),
