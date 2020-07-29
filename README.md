@@ -1,15 +1,7 @@
-# 🚀 Welcome to your new awesome project!
+# Simple-ssr-react-example
 
-This project has been created using **webpack scaffold**, you can now run
-
+## Usage
+```shell
+$ yarn install
+$ yarn start
 ```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
