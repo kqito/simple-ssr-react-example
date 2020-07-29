@@ -5,9 +5,9 @@ import { Footer } from "./components/footer";
 
 export const App = () => {
   return (
-    <div>
+    <>
       <Router />
       <Footer />
-    </div>
+    </>
   );
 };
