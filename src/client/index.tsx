@@ -6,10 +6,8 @@ import { App } from "./app";
 
 import "./index.css";
 
-const renderDom = module.hot ? ReactDom.render : ReactDom.hydrate;
-
 export const render = () => {
-  renderDom(
+  ReactDom.hydrate(
     <BrowserRouter>
       <App />
     </BrowserRouter>,
